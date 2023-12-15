@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace RPG.Entities
+namespace RPG.Components
 {
     interface ICharacter
     {
@@ -21,7 +20,7 @@ namespace RPG.Entities
         Vector3 GetPosition();
     }
 
-    public abstract class BaseCharacter : ICharacter, IDisposable
+    public abstract class BaseCharacter : ICharacter
     {
         #region SHOULD BE DECLARED IN PLAYER / MOB
         private const float BASE_ATTACK = 7.5f;
@@ -152,6 +151,11 @@ namespace RPG.Entities
         public Vector3 GetPosition()
         {
             return _position;
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            _position = position;
         }
 
         public override string ToString()

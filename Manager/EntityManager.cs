@@ -1,29 +1,15 @@
 using UnityEngine;
-using RPG.Entities;
-using System.Collections.Generic;
+using RPG.Components;
+using RPG.Renderer;
 
 namespace RPG.Manager
 {
     public class EntityManager
     {
-        private readonly Player _player;
-        private readonly List<Mob> _mobs;
-        public EntityManager(Player player = null, List<Mob> mobs = null)
+        private PlayerRenderer _playerRenderer;
+        public EntityManager()
         {
-            //Debug.Log("Initialisation de EntityManager");
-
-            _player = player ?? new Player();
-            _mobs = mobs ?? new List<Mob>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                _mobs.Add(new Mob());
-            }
-        }
-
-        public Player GetPlayer()
-        {
-            return _player;
+            _playerRenderer = new PlayerRenderer();
         }
     }
 }

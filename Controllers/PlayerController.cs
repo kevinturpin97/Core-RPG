@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RPG.Components;
+using UnityEngine;
 
-namespace Assets.Script.Controllers
+namespace RPG.Controllers
 {
-    internal class PlayerController
+    public class PlayerController : MonoBehaviour
     {
+        private PlayerComponent _playerComponent;
+        private void Awake()
+        {
+            _playerComponent = new PlayerComponent();
+        }
+        private void Start()
+        {
+            
+        }
+        private void Update()
+        {
+            transform.position = _playerComponent.GetPosition();
+        }
     }
 }
