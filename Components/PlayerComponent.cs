@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using RPG.Components.Commons;
 
 namespace RPG.Components
 {
@@ -8,6 +9,7 @@ namespace RPG.Components
         float GetExp();
         float GetExpToNextLevel();
     }
+
     public class PlayerComponent : BaseCharacter, IPlayer
     {
         protected override float BASE_ATTACK { get; set; } = 7.5f;

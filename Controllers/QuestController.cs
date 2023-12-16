@@ -5,7 +5,10 @@ namespace RPG.Controllers
 {
     interface IQuest
     {
-
+        void AcceptQuest();
+        void CompleteQuest();
+        bool IsQuestComplete();
+        bool HasQuest();
     }
 
     public class QuestController : MonoBehaviour, IQuest
@@ -25,6 +28,26 @@ namespace RPG.Controllers
         private void Update()
         {
 
+        }
+
+        void IQuest.CompleteQuest()
+        {
+            
+        }
+
+        bool IQuest.HasQuest()
+        {
+            return false;
+        }
+
+        bool IQuest.IsQuestComplete()
+        {
+            return false;
+        }
+
+        void IQuest.AcceptQuest()
+        {
+            
         }
     }
 }

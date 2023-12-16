@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RPG.Components
+namespace RPG.Components.Commons
 {
     interface ICharacter
     {
