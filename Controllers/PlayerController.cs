@@ -1,6 +1,6 @@
-﻿using RPG.Components;
-using System;
+﻿using System;
 using UnityEngine;
+using RPG.Components;
 
 namespace RPG.Controllers
 {
@@ -21,16 +21,16 @@ namespace RPG.Controllers
 
         private void Update()
         {
-            this.EventLIstener();
+            EventLIstener();
 
             _playerComponent.SetPosition(transform.position);
         }
 
         private void EventLIstener()
         {
-            this.ViewListener();
-            this.MoveListener();
-            this.ActionListener();
+            ViewListener();
+            MoveListener();
+            ActionListener();
         }
 
         private void ViewListener()

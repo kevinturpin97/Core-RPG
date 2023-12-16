@@ -1,8 +1,8 @@
 namespace RPG.Components
 {
-    public class QuestData
+    public class QuestComponent
     {
-        public QuestData()
+        public QuestComponent()
         {
 
         }

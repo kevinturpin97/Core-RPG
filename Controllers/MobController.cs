@@ -1,5 +1,5 @@
-﻿using RPG.Components;
-using UnityEngine;
+﻿using UnityEngine;
+using RPG.Components;
 
 namespace RPG.Controllers
 {

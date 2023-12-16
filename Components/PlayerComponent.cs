@@ -16,6 +16,7 @@ namespace RPG.Components
         protected override float BASE_EXP_TO_NEXT_LEVEL { get; set; } = 200f;
         private float _exp;
         private float _expToNextLevel;
+
         public PlayerComponent(float life = 100, int level = 1, float exp = 0, float speed = 5, Vector3 position = default(Vector3)) : base(life, level, speed, position)
         {
             _expToNextLevel = this.GetLevel() * BASE_EXP_TO_NEXT_LEVEL;

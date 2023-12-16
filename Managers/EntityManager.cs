@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
 using RPG.Entities;
-using System.Collections.Generic;
 
 namespace RPG.Managers
 {
@@ -21,7 +21,7 @@ namespace RPG.Managers
 
         private void Initialize()
         {
-            GameObject entities = new()
+            GameObject entityGroup = new()
             {
                 name = "Entities",
                 tag = "Entity"

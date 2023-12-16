@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using RPG.Controllers;
 
 namespace RPG.Entities
 {
@@ -7,8 +8,8 @@ namespace RPG.Entities
     // </summary>
     public class Player
     {
-        private readonly GameObject _player;
-        private readonly GameObject _mainCamera;
+        private GameObject _player;
+        private GameObject _mainCamera;
 
         public Player()
         {
@@ -18,9 +19,9 @@ namespace RPG.Entities
 
         private void Instantiate()
         {
-            GameObject playerObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/PlayerPrefab"));
-            playerObject.name = "Player";
-            playerObject.AddComponent<PlayerController>();
+            _player = Object.Instantiate(Resources.Load<GameObject>("Prefabs/PlayerPrefab"));
+            _player.name = "Player";
+            _player.AddComponent<PlayerController>();
 
             GameObject entityGroup = GameObject.FindWithTag("Entity");
 
@@ -33,9 +34,7 @@ namespace RPG.Entities
                 };
             }
 
-            playerObject.transform.SetParent(entityGroup.transform);
-
-            _player = playerObject;
+            _player.transform.SetParent(entityGroup.transform);
         }
 
         private void InstantiateMainCamera()
@@ -45,7 +44,7 @@ namespace RPG.Entities
                 Object.Destroy(Camera.main.gameObject);
             }
 
-            GameObject cameraGameObject = new()
+            _mainCamera = new()
             {
                 name = "PlayerCamera",
                 tag = "MainCamera",
@@ -57,11 +56,9 @@ namespace RPG.Entities
                 }
             };
 
-            cameraGameObject.transform.SetParent(_player.transform, true);
-            cameraGameObject.AddComponent<AudioListener>();
-            cameraGameObject.AddComponent<Camera>();
-
-            _mainCamera = cameraGameObject;
+            _mainCamera.transform.SetParent(_player.transform, true);
+            _mainCamera.AddComponent<AudioListener>();
+            _mainCamera.AddComponent<Camera>();
         }
     }
 }

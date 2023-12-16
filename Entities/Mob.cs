@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using RPG.Controllers;
 
 namespace RPG.Entities
 {
     public class Mob
     {
-        private readonly GameObject _mob;
+        private GameObject _mob;
 
         public Mob()
         {
@@ -13,9 +14,9 @@ namespace RPG.Entities
 
         private void Instantiate()
         {
-            GameObject mobObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/MobPrefab"));
-            mobObject.name = "Mob";
-            mobObject.AddComponent<MobController>();
+            _mob = Object.Instantiate(Resources.Load<GameObject>("Prefabs/MobPrefab"));
+            _mob.name = "Mob";
+            _mob.AddComponent<MobController>();
 
             GameObject entityGroup = GameObject.FindWithTag("Entity");
 
@@ -28,9 +29,7 @@ namespace RPG.Entities
                 };;
             }
 
-            mobObject.transform.SetParent(entityGroup.transform);
-
-            _mob = mobObject;
+            _mob.transform.SetParent(entityGroup.transform);
         }
     }
 }
