@@ -1,29 +1,50 @@
-﻿using RPG.Renderer;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Entities
 {
+    // <summary>
+    // The Player class is responsible for managing the player's GameObject and Camera.
+    // </summary>
     public class Player
     {
-        private readonly PlayerRenderer _playerRenderer;
+        private readonly GameObject _player;
         private readonly GameObject _mainCamera;
 
         public Player()
         {
-            _playerRenderer = new PlayerRenderer();
+            Instantiate();
+            InstantiateMainCamera();
+        }
 
-            Camera defaultCamera = Camera.main;
+        private void Instantiate()
+        {
+            GameObject playerObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/PlayerPrefab"));
+            playerObject.name = "Player";
+            playerObject.AddComponent<PlayerController>();
 
-            if (defaultCamera != null)
+            GameObject entityGroup = GameObject.FindWithTag("Entity");
+
+            if (entityGroup == null)
+            {
+                entityGroup = new GameObject
+                {
+                    name = "Entities",
+                    tag = "Entity"
+                };
+            }
+
+            playerObject.transform.SetParent(entityGroup.transform);
+
+            _player = playerObject;
+        }
+
+        private void InstantiateMainCamera()
+        {
+            if (Camera.main != null)
             {
                 Object.Destroy(Camera.main.gameObject);
             }
 
-            _mainCamera = InstantiateMainCamera();
-        }
-
-        private GameObject InstantiateMainCamera()
-        {
             GameObject cameraGameObject = new()
             {
                 name = "PlayerCamera",
@@ -36,11 +57,11 @@ namespace RPG.Entities
                 }
             };
 
-            cameraGameObject.transform.SetParent(_playerRenderer.GetObject().transform, true);
+            cameraGameObject.transform.SetParent(_player.transform, true);
             cameraGameObject.AddComponent<AudioListener>();
             cameraGameObject.AddComponent<Camera>();
 
-            return cameraGameObject;
+            _mainCamera = cameraGameObject;
         }
     }
 }

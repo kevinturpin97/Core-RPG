@@ -5,11 +5,33 @@ namespace RPG.Entities
 {
     public class Mob
     {
-        private readonly MobRenderer _mobRenderer;
+        private readonly GameObject _mob;
 
         public Mob()
         {
-            _mobRenderer = new MobRenderer();
+            Instantiate();
+        }
+
+        private void Instantiate()
+        {
+            GameObject mobObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/MobPrefab"));
+            mobObject.name = "Mob";
+            mobObject.AddComponent<MobController>();
+
+            GameObject entityGroup = GameObject.FindWithTag("Entity");
+
+            if (entityGroup == null)
+            {
+                entityGroup = new GameObject
+                {
+                    name = "Entities",
+                    tag = "Entity"
+                };;
+            }
+
+            mobObject.transform.SetParent(entityGroup.transform);
+
+            _mob = mobObject;
         }
     }
 }
