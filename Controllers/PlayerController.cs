@@ -1,4 +1,5 @@
 ﻿using RPG.Components;
+using System;
 using UnityEngine;
 
 namespace RPG.Controllers
@@ -7,14 +8,17 @@ namespace RPG.Controllers
     {
         private PlayerComponent _playerComponent;
         private Collider _obstacleCollider;
+
         private void Awake()
         {
             _playerComponent = new PlayerComponent(100, 1, 0, 5, new Vector3(0, 0, 0));
         }
+
         private void Start()
         {
             transform.position = _playerComponent.GetPosition();
         }
+
         private void Update()
         {
             this.EventLIstener();
@@ -24,8 +28,14 @@ namespace RPG.Controllers
 
         private void EventLIstener()
         {
+            this.ViewListener();
             this.MoveListener();
             this.ActionListener();
+        }
+
+        private void ViewListener()
+        {
+            transform.Rotate(0f, Input.GetAxis("Mouse X") * 2f, 0f);
         }
 
         private void MoveListener()
@@ -33,20 +43,22 @@ namespace RPG.Controllers
             Vector3 moveDirection = Vector3.zero;
 
             if (Input.GetKey(KeyCode.W))
-                moveDirection.z = 1;
-            else if (Input.GetKey(KeyCode.S))
-                moveDirection.z = -1;
+                moveDirection += transform.forward;
+
+            if (Input.GetKey(KeyCode.S))
+                moveDirection -= transform.forward;
 
             if (Input.GetKey(KeyCode.A))
-                moveDirection.x = -1;
-            else if (Input.GetKey(KeyCode.D))
-                moveDirection.x = 1;
+                moveDirection -= transform.right;
+
+            if (Input.GetKey(KeyCode.D))
+                moveDirection += transform.right;
+
+            moveDirection.Normalize();
 
             if (moveDirection != Vector3.zero)
             {
-                float speed = _playerComponent.GetSpeed();
-
-                transform.position = new Vector3(transform.position.x + moveDirection.x * speed * Time.deltaTime, transform.position.y, transform.position.z + moveDirection.z * speed * Time.deltaTime);
+                transform.position += moveDirection * _playerComponent.GetSpeed() * Time.deltaTime;
             }
         }
 
@@ -60,10 +72,13 @@ namespace RPG.Controllers
 
         private void ActionListener()
         {
-            if (Input.GetMouseButton(0)) {
+            if (Input.GetMouseButton(0))
+            {
                 Debug.Log("Attack");
                 Destroy(gameObject);
-            } else if (Input.GetMouseButton(1)) {
+            }
+            else if (Input.GetMouseButton(1))
+            {
                 Debug.Log("Defend");
             }
         }

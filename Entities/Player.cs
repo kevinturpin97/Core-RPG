@@ -7,6 +7,7 @@ namespace RPG.Entities
     {
         private readonly PlayerRenderer _playerRenderer;
         private readonly GameObject _mainCamera;
+
         public Player()
         {
             _playerRenderer = new PlayerRenderer();
@@ -23,7 +24,7 @@ namespace RPG.Entities
 
         private GameObject InstantiateMainCamera()
         {
-            GameObject cameraGameObject = new ()
+            GameObject cameraGameObject = new()
             {
                 name = "PlayerCamera",
                 tag = "MainCamera",

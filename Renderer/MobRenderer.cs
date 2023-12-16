@@ -7,6 +7,7 @@ namespace RPG.Renderer
     public class MobRenderer
     {
         private GameObject _gameObject;
+
         public MobRenderer()
         {
             _gameObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/MobPrefab"));

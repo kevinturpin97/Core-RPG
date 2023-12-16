@@ -13,12 +13,10 @@ namespace RPG
         }
         private void Start()
         {
-
         }
 
         private void Update()
         {
-            //Debug.Log(_gameManager._playerManager.GetPlayerComponent()); 
         }
     }
 

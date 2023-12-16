@@ -7,14 +7,17 @@ namespace RPG.Controllers
     {
         private MobComponent _mobComponent;
         private Collider _obstacleCollider;
+
         private void Awake()
         {
             _mobComponent = new MobComponent(position: new Vector3(3f, 0f, 3f));
         }
+
         private void Start()
         {
             transform.position = _mobComponent.GetPosition();
         }
+
         private void Update()
         {
             _mobComponent.SetPosition(transform.position);
