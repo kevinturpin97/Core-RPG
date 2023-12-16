@@ -1,5 +1,4 @@
-﻿using RPG.Renderer;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Entities
 {
