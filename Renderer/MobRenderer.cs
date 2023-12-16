@@ -4,14 +4,14 @@ using RPG.Controllers;
 
 namespace RPG.Renderer
 {
-    public class PlayerRenderer
+    public class MobRenderer
     {
         private GameObject _gameObject;
-        public PlayerRenderer()
+        public MobRenderer()
         {
-            _gameObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/PlayerPrefab"));
-            _gameObject.name = "Player";
-            _gameObject.AddComponent<PlayerController>();
+            _gameObject = Object.Instantiate(Resources.Load<GameObject>("Prefabs/MobPrefab"));
+            _gameObject.name = "Mob";
+            _gameObject.AddComponent<MobController>();
 
             GameObject entityGroup = GameObject.FindWithTag("Entity");
 

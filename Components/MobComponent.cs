@@ -1,8 +1,10 @@
+using UnityEngine;
+
 namespace RPG.Components
 {
-    public sealed class MobComponent : BaseCharacter
+    public class MobComponent : BaseCharacter
     {
-        public MobComponent(float life = 1000, int level = 10, float exp = 0, float speed = 2, Vector3 position = default(Vector3)) : base(life, level, exp, speed, position)
+        public MobComponent(float life = 1000, int level = 10, float speed = 2, Vector3 position = default(Vector3)) : base(life, level, speed, position)
         {
 
         }

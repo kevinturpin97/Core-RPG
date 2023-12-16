@@ -1,5 +1,5 @@
 using UnityEngine;
-using RPG.Manager;
+using RPG.Managers;
 
 namespace RPG
 {

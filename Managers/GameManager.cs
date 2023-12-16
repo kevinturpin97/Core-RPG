@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RPG.Manager
+namespace RPG.Managers
 {
     public class GameManager
     {
