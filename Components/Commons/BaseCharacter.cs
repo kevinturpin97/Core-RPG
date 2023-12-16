@@ -42,8 +42,8 @@ namespace RPG.Components.Commons
             _life = life;
             _speed = speed;
             _position = position;
-            _attackDamage = BASE_ATTACK * ((_level / 100) + 1);
-            _magicDamage = BASE_MAGIC * ((_level / 100) + 1);
+            _attackDamage = BASE_ATTACK * ((_level / 100f) + 1);
+            _magicDamage = BASE_MAGIC * ((_level / 100f) + 1);
         }
 
         public void Move(Vector3 destination)
@@ -124,8 +124,8 @@ namespace RPG.Components.Commons
         {
             _level++;
             _maxLife = _level * BASE_MAX_LIFE;
-            _attackDamage = BASE_ATTACK * ((_level / 100f) + 1f);
-            _magicDamage = BASE_MAGIC * ((_level / 100f) + 1f);
+            _attackDamage = BASE_ATTACK * ((_level / 100f) + 1);
+            _magicDamage = BASE_MAGIC * ((_level / 100f) + 1);
         }
 
         public override string ToString()
