@@ -14,22 +14,15 @@ namespace RPG.Entities
 
         private void Instantiate()
         {
-            _mob = Object.Instantiate(Resources.Load<GameObject>("Prefabs/MobPrefab"));
-            _mob.name = "Mob";
+            _mob = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Mobs/MOB_1"));
+            _mob.name = "Mob_1";
+            _mob.tag = "Mob";
+            _mob.transform.position = Vector3.zero;
             _mob.AddComponent<MobController>();
 
             GameObject entityGroup = GameObject.FindWithTag("Entity");
 
-            if (entityGroup == null)
-            {
-                entityGroup = new GameObject
-                {
-                    name = "Entities",
-                    tag = "Entity"
-                };;
-            }
-
-            _mob.transform.SetParent(entityGroup.transform);
+            _mob.transform.SetParent(entityGroup.transform, false);
         }
     }
 }

@@ -1,49 +1,50 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace RPG.Components.Commons
 {
+    public enum Status
+    {
+        NotStarted,
+        InProgress,
+        Completed,
+        Finished
+    }
+
+    public enum RewardType
+    {
+        XP,
+        Gold,
+        Item
+    }
+
+    public enum TaskAction
+    {
+        Kill,
+        Collect,
+        Talk,
+        Move
+    }
+
+    public enum RequiredAction
+    {
+        Kill,
+        Collect,
+        Talk,
+    }
+
+    public enum ChoiceAction
+    {
+        Accept,
+        Decline,
+        Complete,
+        Continue
+    }
+
     [Serializable]
     public class SchemaQuest
     {
         #region Child Class Definition
-
-        enum Status
-        {
-            Inactive,
-            Active,
-            Complete
-        }
-
-        enum RewardType
-        {
-            XP,
-            Gold,
-            Item
-        }
-
-        public enum TaskAction
-        {
-            Kill, // entity id
-            Collect, // item id
-            Talk, // npc id
-            Move // destination id
-        }
-
-        public enum RequiredAction
-        {
-            Kill,
-            Collect,
-            Talk,
-        }
-
-        public enum ChoiceAction
-        {
-            Accept,
-            Decline,
-            Complete,
-            Continue
-        }
 
         // When reward is given, the task is complete
         public class Reward
@@ -65,9 +66,8 @@ namespace RPG.Components.Commons
         public class Dialogue
         {
             public int ID;
-            public string Name;
             public string Text;
-            public bool isPlayer; // if true, the dialogue is from the player, otherwise is from the npc
+            public bool isPlayer; // if true, choices should be empty or disabled
             public List<Choice> Choices;
 
             public Dialogue()
@@ -80,10 +80,10 @@ namespace RPG.Components.Commons
         {
             public int ID;
             public string Name;
-            public string Description;
+            public string Resume;
             public Status Status;
             public RequiredAction RequiredAction;
-            public int TargetID;
+            public int Value;
             public int Quantity;
             public Dialogue Dialogue;
         }
@@ -92,10 +92,10 @@ namespace RPG.Components.Commons
         {
             public int ID;
             public string Name;
-            public string Description;
+            public string Resume;
             public Status Status;
             public TaskAction Action;
-            public int TargetID;
+            public int Value;
             public int Quantity;
             public Dictionary<Status, Dialogue> Dialogues;
             public List<Reward> Rewards;

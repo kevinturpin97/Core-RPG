@@ -7,21 +7,28 @@ namespace RPG.Managers
     public class EntityManager
     {
         private Player _player;
+        private List<Npc> _npcs;
         private List<Mob> _mobs;
+
         public EntityManager()
         {
             Initialize();
 
-            _player = new Player();
+            _npcs = new List<Npc>
+            {
+                new Npc()
+            };
             _mobs = new List<Mob>
             {
                 new Mob()
             };
+
+            _player = new Player(); // This must be the last one to be instantiated.
         }
 
         private void Initialize()
         {
-            GameObject entityGroup = new()
+            _ = new GameObject()
             {
                 name = "Entities",
                 tag = "Entity"

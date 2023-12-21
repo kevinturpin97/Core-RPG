@@ -4,13 +4,13 @@ namespace RPG.Managers
 {
     public class GameManager
     {
-        private EntityManager _entityManager;
         private QuestManager _questManager;
+        private EntityManager _entityManager;
 
         public GameManager()
         {
-            _entityManager = new EntityManager();
             _questManager = new QuestManager();
+            _entityManager = new EntityManager();
         }
     }
 }

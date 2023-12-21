@@ -14,6 +14,7 @@ namespace RPG.Components.Commons
         float GetLife();
         int GetLevel();
         float GetSpeed();
+        void SetSpeed(float speed);
         void SetPosition(Vector3 position);
         Vector3 GetPosition();
     }
@@ -109,6 +110,11 @@ namespace RPG.Components.Commons
         public float GetSpeed()
         {
             return _speed;
+        }
+
+        public void SetSpeed(float speed)
+        {
+            _speed = speed;
         }
 
         public Vector3 GetPosition()

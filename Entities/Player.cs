@@ -19,22 +19,14 @@ namespace RPG.Entities
 
         private void Instantiate()
         {
-            _player = Object.Instantiate(Resources.Load<GameObject>("Prefabs/PlayerPrefab"));
+            _player = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Player/PLAYER"));
             _player.name = "Player";
+            _player.tag = "Player";
             _player.AddComponent<PlayerController>();
 
             GameObject entityGroup = GameObject.FindWithTag("Entity");
 
-            if (entityGroup == null)
-            {
-                entityGroup = new GameObject
-                {
-                    name = "Entities",
-                    tag = "Entity"
-                };
-            }
-
-            _player.transform.SetParent(entityGroup.transform);
+            _player.transform.SetParent(entityGroup.transform, false);
         }
 
         private void InstantiateMainCamera()
@@ -56,7 +48,7 @@ namespace RPG.Entities
                 }
             };
 
-            _mainCamera.transform.SetParent(_player.transform, true);
+            _mainCamera.transform.SetParent(_player.transform, false);
             _mainCamera.AddComponent<AudioListener>();
             _mainCamera.AddComponent<Camera>();
         }

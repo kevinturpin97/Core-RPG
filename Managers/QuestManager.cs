@@ -4,11 +4,11 @@ namespace RPG.Managers
 {
     public class QuestManager
     {
-        Quest quest;
+        Quest _quest;
 
         public QuestManager()
         {
-            quest = new Quest();
+            _quest = new Quest();
         }
     }
 }

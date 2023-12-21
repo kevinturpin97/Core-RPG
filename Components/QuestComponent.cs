@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEngine;
 using RPG.Components.Commons;
+using System.Collections.Generic;
 
 namespace RPG.Components
 {
@@ -10,6 +11,8 @@ namespace RPG.Components
         void CompleteQuest();
         bool IsQuestComplete();
         bool HasQuest();
+        bool UpdateStatus(SchemaQuest quest);
+        List<SchemaQuest> GetQuests();
     }
 
     public class QuestComponent : IQuest
@@ -27,11 +30,39 @@ namespace RPG.Components
             StreamReader buffer = File.OpenText(QUEST_PATH);
 
             _questStructure = JsonUtility.FromJson<QuestStructure>(buffer.ReadToEnd());
+        }
 
+        public List<SchemaQuest> GetQuests()
+        {
+            return _questStructure.Quests;
+        }
+
+        public SchemaQuest FindQuest(string NPC)
+        {
             foreach (SchemaQuest quest in _questStructure.Quests)
             {
-                Debug.Log(quest.Name);
+                if (quest.Owner == NPC && quest.Status != Status.Completed)
+                {
+                    return quest;
+                }
             }
+
+            return null;
+        }
+
+        public bool UpdateStatus(SchemaQuest quest)
+        {
+            for (int i = 0; i < _questStructure.Quests.Count; i++)
+            {
+                if (_questStructure.Quests[i].Name == quest.Name)
+                {
+                    _questStructure.Quests[i] = quest;
+
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void AcceptQuest()
