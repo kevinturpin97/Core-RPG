@@ -5,12 +5,19 @@ namespace RPG.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
+        #region Player data
         private PlayerComponent _playerComponent;
+        #endregion
+
+        #region Quest
+        private QuestController _questController;
+        #endregion
+
+        #region Unity Component
         private Collider _obstacleCollision;
         private Collider _obstacleTrigger;
         private Rigidbody _rigidbody;
-        private QuestController _questController;
-        private bool isGrounded = true;
+        #endregion
 
         private void Awake()
         {
@@ -97,7 +104,9 @@ namespace RPG.Controllers
         {
             if (Input.GetMouseButtonUp(0) && _obstacleTrigger)
             {
-                _questController.TriggerQuest(_obstacleTrigger.gameObject);
+                if (_obstacleTrigger.gameObject.tag == "Npc") {
+                    _questController.TriggerQuest(_obstacleTrigger.gameObject);
+                }
             }
             else if (Input.GetMouseButtonUp(1))
             {

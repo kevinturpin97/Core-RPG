@@ -37,9 +37,9 @@ namespace RPG.Controllers
             {
                 if (value)
                 {
+                    GameObject newQuest = Instantiate(Resources.Load<GameObject>("Prefabs/Quest/New"));
                     Transform model = transform.Find("NpcModel");
 
-                    GameObject newQuest = Instantiate(Resources.Load<GameObject>("Prefabs/Quest/New"));
                     newQuest.name = "QuestAvailable";
                     newQuest.transform.position = new Vector3(0f, 2f * model.transform.localScale.y, 0f);
 
@@ -64,8 +64,8 @@ namespace RPG.Controllers
                 if (value)
                 {
                     Transform model = transform.Find("NpcModel");
-
                     GameObject information = Instantiate(Resources.Load<GameObject>("Prefabs/Quest/Info"));
+
                     information.name = "InformationAvailable";
                     information.transform.position = new Vector3(0f, 2f * model.transform.localScale.y, 0f);
 

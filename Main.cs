@@ -9,7 +9,7 @@ namespace RPG
 
         private void Awake()
         {
-            _gameManager = new();
+            _gameManager = new GameManager();
         }
         private void Start()
         {
