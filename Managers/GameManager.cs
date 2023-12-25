@@ -11,6 +11,13 @@ namespace RPG.Managers
         {
             _sceneManager = new SceneManager();
             _uiManager = new UIManager();
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            // TODO: preload assets
+            _sceneManager.LoadLevel(1);
         }
     }
 }

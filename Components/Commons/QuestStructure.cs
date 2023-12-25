@@ -52,6 +52,7 @@ namespace RPG.Components.Commons
             public int ID;
             public RewardType Type;
             public int Value;
+            public int Quantity;
         }
 
         // If the dialogue come from Quest, every action can be invoked
@@ -67,7 +68,7 @@ namespace RPG.Components.Commons
         {
             public int ID;
             public string Text;
-            public bool isPlayer; // if true, choices should be empty or disabled
+            public bool IsPlayer; // if true, choices should be empty or disabled
             public List<Choice> Choices;
 
             public Dialogue()
